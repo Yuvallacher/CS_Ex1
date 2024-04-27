@@ -1,7 +1,5 @@
 ﻿using System;
-using Ex01_02;
-
-
+using System.Text;
 
 namespace Ex01_03
 {
@@ -25,10 +23,9 @@ namespace Ex01_03
                 successfullyParsed = int.TryParse(userInput, out numOfRows);
                 if (!successfullyParsed)
                 {
-                    Console.WriteLine("Invalid input! \"" + userInput + "\" is not a whole number");
+                    Console.WriteLine(new StringBuilder().AppendFormat("Invalid input! \"{0}\" is not a whole number", userInput));
                 }
-            }
-            while (!successfullyParsed);
+            } while (!successfullyParsed);
 
             if (numOfRows % 2 == 0)
             {
