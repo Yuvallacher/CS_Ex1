@@ -114,7 +114,8 @@ namespace Ex01_04
         public static void CheckNumberOfLowercaseLetters(StringBuilder i_StringToCheck)
         {
             int counterOfLowercaseLetters = 0;
-            bool isNumber = long.TryParse(i_StringToCheck.ToString(), out long stringAsNumber);
+            bool isNumber = long.TryParse(i_StringToCheck.ToString(), out _);
+
             if (!isNumber)
             {
                 for (int i = 0; i < i_StringToCheck.Length; i++)
@@ -128,7 +129,7 @@ namespace Ex01_04
                 string[] args = new string[2];
                 args[0] = i_StringToCheck.ToString();
                 args[1] = counterOfLowercaseLetters.ToString();
-                Console.WriteLine(new StringBuilder().AppendFormat("The string \"{0}\" contains {1} lowercase letters", args));
+                Console.WriteLine("The string \"{0}\" contains {1} lowercase letters", args);
             }
         }
     }

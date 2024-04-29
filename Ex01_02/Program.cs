@@ -29,9 +29,9 @@ namespace Ex01_02
             }
         }
 
-        public static void PrintLine(int length)
+        public static void PrintLine(int i_length)
         {
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < i_length; i++)
             {
                 Console.Write("*");
             }

@@ -37,7 +37,7 @@ Smallest number: {1}", maxNumber, minNumber);
         {
             bool validInputFromUser;
             int numFromUser;
-            StringBuilder userInput = new StringBuilder(k_LenOfBinaryNumber);
+            StringBuilder userInput = new StringBuilder(k_LengthOfBinaryNumber);
 
             do
             {
@@ -75,7 +75,7 @@ Smallest number: {1}", maxNumber, minNumber);
             
             if (validNumFromUser)
             {
-                if (io_UserInput.Length == k_LenOfBinaryNumber)
+                if (io_UserInput.Length == k_LengthOfBinaryNumber)
                 {
                     validNumFromUser = IsBinaryNumber(io_UserInput);
                 }
@@ -92,7 +92,7 @@ Smallest number: {1}", maxNumber, minNumber);
         {
             bool validBinaryNumber = true;
             
-            for (int i = 0; i < k_LenOfBinaryNumber; i++)
+            for (int i = 0; i < k_LengthOfBinaryNumber; i++)
             {
                 if (io_UserInput[i] != '0' && io_UserInput[i] != '1')
                 {
@@ -122,7 +122,7 @@ Smallest number: {1}", maxNumber, minNumber);
         {
             int countOfDigitsInTheNumber = 0;
 
-            for (int i = 0; i < k_LenOfBinaryNumber; i++) 
+            for (int i = 0; i < k_LengthOfBinaryNumber; i++) 
             { 
                 if (io_BinaryNumber % 10 == i_DigitToSearch)
                 {
