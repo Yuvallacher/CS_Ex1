@@ -6,7 +6,7 @@ namespace Ex01_01
     public class Program
     {   
         public const int k_AmountOfNumbers = 3;
-        public const int k_LenOfBinaryNumber = 9; 
+        public const int k_LengthOfBinaryNumber = 9; 
         public const int k_Zero = 0;
         public const int k_One = 1;
         
