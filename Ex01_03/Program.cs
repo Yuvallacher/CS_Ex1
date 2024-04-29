@@ -8,22 +8,24 @@ namespace Ex01_03
         public static void Main()
         {
             int numOfRows = GetUserInput();
-            Ex01_02.Program.PrintDiamond(0, numOfRows);
+            Ex01_02.Program.PrintDiamond(Ex01_02.Program.k_StartingRow, numOfRows);
         }
 
         public static int GetUserInput()
         {
             bool successfullyParsed;
             int numOfRows;
+            StringBuilder userInput = new StringBuilder();
 
             do
             {
                 Console.WriteLine("Please enter the number of rows for the diamond: ");
-                string userInput = Console.ReadLine();
-                successfullyParsed = int.TryParse(userInput, out numOfRows);
+                userInput.Append(Console.ReadLine());
+                successfullyParsed = int.TryParse(userInput.ToString(), out numOfRows);
                 if (!successfullyParsed)
                 {
-                    Console.WriteLine(new StringBuilder().AppendFormat("Invalid input! \"{0}\" is not a whole number", userInput));
+                    Console.WriteLine("Invalid input! Your input is not a whole number");
+                    userInput.Clear();
                 }
             } while (!successfullyParsed);
 

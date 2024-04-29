@@ -5,6 +5,8 @@ namespace Ex01_04
 {
     public class Program
     {
+        public const int k_lengthOfInput = 10;
+        
         public static void Main()
         {
             StringBuilder userInput = GetUserInput();
@@ -16,7 +18,7 @@ namespace Ex01_04
         public static StringBuilder GetUserInput()
         {
             bool validInput;
-            StringBuilder userInput = new StringBuilder(10);
+            StringBuilder userInput = new StringBuilder(k_lengthOfInput);
             
             do
             {
@@ -25,7 +27,7 @@ namespace Ex01_04
                 validInput = ValidateInput(userInput);
                 if (!validInput)
                 {
-                    Console.WriteLine("Invalid input! Input should only contain either letters or numbers, but not simultaneously");
+                    Console.WriteLine("Invalid input! Please try again");
                     userInput.Clear();
                 }
             } while (!validInput);
@@ -35,6 +37,7 @@ namespace Ex01_04
 
         public static bool ValidateInput(StringBuilder io_UserInput)
         {
+            bool lengthOfInputCorrect = io_UserInput.Length == k_lengthOfInput;
             bool containsLetters = false;
             bool containsNumbers = false;
             bool containsSymbols = false;
@@ -55,7 +58,7 @@ namespace Ex01_04
                 }
             }
 
-            return !(containsLetters && containsNumbers) && !containsSymbols;
+            return !(containsLetters && containsNumbers) && !containsSymbols && lengthOfInputCorrect;
         }
 
         public static void IsPalindrome(StringBuilder i_StringToCheck)
@@ -92,9 +95,9 @@ namespace Ex01_04
             return result;
         }
 
-        public static void IsDividableByFour(StringBuilder i_StringToCheck)
+        public static void IsDividableByFour(StringBuilder io_StringToCheck)
         {
-            bool isNumber = long.TryParse(i_StringToCheck.ToString(), out long stringAsNumber);
+            bool isNumber = long.TryParse(io_StringToCheck.ToString(), out long stringAsNumber);
             if (isNumber)
             {
                 if (stringAsNumber % 4 == 0)
@@ -125,7 +128,7 @@ namespace Ex01_04
                 string[] args = new string[2];
                 args[0] = i_StringToCheck.ToString();
                 args[1] = counterOfLowercaseLetters.ToString();
-                Console.WriteLine(new StringBuilder(65).AppendFormat("The string \"{0}\" contains {1} lowercase letters", args));
+                Console.WriteLine(new StringBuilder().AppendFormat("The string \"{0}\" contains {1} lowercase letters", args));
             }
         }
     }

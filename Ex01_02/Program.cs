@@ -4,25 +4,27 @@ namespace Ex01_02
 {
     public class Program
     {
+        public const int k_StartingRow = 0;
+
         public static void Main()
         {
-            PrintDiamond(0, 9);
+            PrintDiamond(k_StartingRow, 9);
         }
 
-        public static void PrintDiamond(int i_numOfCurrentRow, int i_desiredNumOfRows)
+        public static void PrintDiamond(int i_NumOfCurrentRow, int i_DesiredNumOfRows)
         {
-            if (i_numOfCurrentRow < i_desiredNumOfRows)
+            if (i_NumOfCurrentRow < i_DesiredNumOfRows)
             {
-                PrintDiamond(i_numOfCurrentRow + 1, i_desiredNumOfRows);
-                int spaces = Math.Abs(i_desiredNumOfRows / 2 - i_numOfCurrentRow);
+                PrintDiamond(i_NumOfCurrentRow + 1, i_DesiredNumOfRows);
+                int spaces = Math.Abs(i_DesiredNumOfRows / 2 - i_NumOfCurrentRow);
                 Console.Write(new string(' ', spaces));
-                if (i_numOfCurrentRow < i_desiredNumOfRows / 2)
+                if (i_NumOfCurrentRow < i_DesiredNumOfRows / 2)
                 {
-                    PrintLine(2 * i_numOfCurrentRow + 1);
+                    PrintLine(2 * i_NumOfCurrentRow + 1);
                 }
                 else
                 {
-                    PrintLine((i_desiredNumOfRows - i_numOfCurrentRow) * 2 - 1);
+                    PrintLine((i_DesiredNumOfRows - i_NumOfCurrentRow) * 2 - 1);
                 }
             }
         }
