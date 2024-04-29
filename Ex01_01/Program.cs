@@ -5,7 +5,7 @@ namespace Ex01_01
 {
     public class Program
     {   
-        public const int k_SizeOfNum = 3;
+        public const int k_AmountOfNumbers = 3;
         public const int k_LenOfBinaryNumber = 9; 
         public const int k_Zero = 0;
         public const int k_One = 1;
@@ -20,13 +20,13 @@ namespace Ex01_01
             binaryNumber1 = GetUserInput();
             binaryNumber2 = GetUserInput();
             binaryNumber3 = GetUserInput();
-            decimalNumber1 = ConvertBinToDec(binaryNumber1);
-            decimalNumber2 = ConvertBinToDec(binaryNumber2);
-            decimalNumber3 = ConvertBinToDec(binaryNumber3);
+            decimalNumber1 = ConvertBinaryToDecimal(binaryNumber1);
+            decimalNumber2 = ConvertBinaryToDecimal(binaryNumber2);
+            decimalNumber3 = ConvertBinaryToDecimal(binaryNumber3);
             FindOrderOfNumbers(decimalNumber1, decimalNumber2, decimalNumber3, out minNumber, out midNumber, out maxNumber);
             Console.WriteLine("The numbers are {0}, {1}, {2}", minNumber, midNumber, maxNumber);
-            CalcAvgNumOfDigsFromBin(binaryNumber1, binaryNumber2, binaryNumber3);
-            CalcHowManyAreStrongOf2(decimalNumber1, decimalNumber2, decimalNumber3);
+            CalcAvgNumberOfDigitsFromBinary(binaryNumber1, binaryNumber2, binaryNumber3);
+            CalcHowManyArePowerOf2(decimalNumber1, decimalNumber2, decimalNumber3);
             CalcUpSeries(decimalNumber1, decimalNumber2, decimalNumber3);
             Console.WriteLine(
 @"Biggest number: {0}
@@ -53,14 +53,16 @@ Smallest number: {1}", maxNumber, minNumber);
 
             return numFromUser;
         }
-        public static int ConvertBinToDec(int io_BinNum)
+
+        public static int ConvertBinaryToDecimal(int io_BinaryNumber)
         {
             int resDecNumber = 0, currentDigitInNumber, currentPower = 0;
-            while(io_BinNum > 0) 
+
+            while(io_BinaryNumber > 0) 
             {
-                currentDigitInNumber = io_BinNum % 10;
+                currentDigitInNumber = io_BinaryNumber % 10;
                 resDecNumber += currentDigitInNumber * (int)Math.Pow(2, currentPower);
-                io_BinNum /= 10;
+                io_BinaryNumber /= 10;
                 currentPower++;
             }
 
@@ -75,7 +77,7 @@ Smallest number: {1}", maxNumber, minNumber);
             {
                 if (io_UserInput.Length == k_LenOfBinaryNumber)
                 {
-                    validNumFromUser = IsBinNumber(io_UserInput);
+                    validNumFromUser = IsBinaryNumber(io_UserInput);
                 }
                 else
                 {
@@ -86,76 +88,76 @@ Smallest number: {1}", maxNumber, minNumber);
             return validNumFromUser;
         }
 
-        public static bool IsBinNumber(StringBuilder io_UserInput)
+        public static bool IsBinaryNumber(StringBuilder io_UserInput)
         {
-            bool validBinNum = true;
+            bool validBinaryNumber = true;
             
             for (int i = 0; i < k_LenOfBinaryNumber; i++)
             {
                 if (io_UserInput[i] != '0' && io_UserInput[i] != '1')
                 {
-                    validBinNum = false;
+                    validBinaryNumber = false;
                 }
             }
 
-            return validBinNum;
+            return validBinaryNumber;
         }
 
-        public static void CalcAvgNumOfDigsFromBin(int io_BinNum1, int io_BinNum2, int io_BinNum3)
+        public static void CalcAvgNumberOfDigitsFromBinary(int io_BinaryNumber1, int io_BinaryNumber2, int io_BinaryNumber3)
         {
-            float numOfZero = 0, numOfOne = 0;
+            float countOfZero = 0, countOfOne = 0;
 
-            numOfZero += GetHowManyDigs(io_BinNum1, k_Zero);
-            numOfZero += GetHowManyDigs(io_BinNum2, k_Zero);
-            numOfZero += GetHowManyDigs(io_BinNum3, k_Zero);
-            numOfOne += GetHowManyDigs(io_BinNum1, k_One);
-            numOfOne += GetHowManyDigs(io_BinNum2, k_One);
-            numOfOne += GetHowManyDigs(io_BinNum3, k_One);
-            numOfZero /= k_SizeOfNum;
-            numOfOne /= k_SizeOfNum;
-            Console.WriteLine("The average size of digit zero is: {0} and of the digit one is: {1}", numOfZero, numOfOne);
+            countOfZero += GetHowManyDigits(io_BinaryNumber1, k_Zero);
+            countOfZero += GetHowManyDigits(io_BinaryNumber2, k_Zero);
+            countOfZero += GetHowManyDigits(io_BinaryNumber3, k_Zero);
+            countOfOne += GetHowManyDigits(io_BinaryNumber1, k_One);
+            countOfOne += GetHowManyDigits(io_BinaryNumber2, k_One);
+            countOfOne += GetHowManyDigits(io_BinaryNumber3, k_One);
+            countOfZero /= k_AmountOfNumbers;
+            countOfOne /= k_AmountOfNumbers;
+            Console.WriteLine("The average size of digit zero is: {0} and of the digit one is: {1}", countOfZero, countOfOne);
         }
 
-        public static float GetHowManyDigs(int io_BinNum, int i_DigitToSearch)
+        public static float GetHowManyDigits(int io_BinaryNumber, int i_DigitToSearch)
         {
-            int sumOfDigitsInTheNumber = 0;
+            int countOfDigitsInTheNumber = 0;
 
             for (int i = 0; i < k_LenOfBinaryNumber; i++) 
             { 
-                if (io_BinNum % 10 == i_DigitToSearch)
+                if (io_BinaryNumber % 10 == i_DigitToSearch)
                 {
-                    sumOfDigitsInTheNumber++;
+                    countOfDigitsInTheNumber++;
                 }
 
-                io_BinNum /= 10;
+                io_BinaryNumber /= 10;
             }
 
-            return sumOfDigitsInTheNumber;
+            return countOfDigitsInTheNumber;
         }
 
-        public static void CalcUpSeries(int io_DecNum1, int io_DecNum2, int io_DecNum3)
+        public static void CalcUpSeries(int io_DecimalNumber1, int io_DecimalNumber2, int io_DecimalNumber3)
         {
-            int sumOfUpSeries = IsUpSeries(io_DecNum1) + IsUpSeries(io_DecNum2) + IsUpSeries(io_DecNum3);
+            int countOfUpSeries = IsUpSeries(io_DecimalNumber1) + IsUpSeries(io_DecimalNumber2) + IsUpSeries(io_DecimalNumber3);
            
-            Console.WriteLine("Numbers that are an up series: {0}", sumOfUpSeries);
+            Console.WriteLine("Numbers that are an up series: {0}", countOfUpSeries);
         }
 
-        public static int IsUpSeries(int io_DecNum)
+        public static int IsUpSeries(int io_DecimalNumber)
         {
             bool isUpSeries = true;
-            int resIsUpSeries = 0, lastDig = io_DecNum % 10, currDigit;
-            
-            io_DecNum /= 10;
-            while (io_DecNum > 0)
+            int resIsUpSeries = 0, leastSignificantDigit = io_DecimalNumber % 10, currDigit;
+
+            io_DecimalNumber /= 10;
+            while (io_DecimalNumber > 0)
             {
-                currDigit = io_DecNum % 10;
-                if (currDigit >= lastDig)
+                currDigit = io_DecimalNumber % 10;
+                if (currDigit >= leastSignificantDigit)
                 {
                     isUpSeries = false;
                 }
 
-                lastDig = currDigit;
-                io_DecNum /= 10;
+                leastSignificantDigit = currDigit;
+                io_DecimalNumber /= 10;
             }
 
             if (isUpSeries)
@@ -166,31 +168,31 @@ Smallest number: {1}", maxNumber, minNumber);
             return resIsUpSeries;
         }
 
-        public static void CalcHowManyAreStrongOf2(int io_DecNum1, int io_DecNum2, int io_DecNum3)
+        public static void CalcHowManyArePowerOf2(int io_DecimalNumber1, int io_DecimalNumber2, int io_DecimalNumber3)
         {
-            int countOfNumsStrongOf2 = IsStrongOf2(io_DecNum1) + IsStrongOf2(io_DecNum2) + IsStrongOf2(io_DecNum3);
+            int countOfNumbersPowerOf2 = IsPowerOf2(io_DecimalNumber1) + IsPowerOf2(io_DecimalNumber2) + IsPowerOf2(io_DecimalNumber3);
             
-            Console.WriteLine("Numbers that are a power of 2: {0}", countOfNumsStrongOf2);
+            Console.WriteLine("Numbers that are a power of 2: {0}", countOfNumbersPowerOf2);
         }
 
-        public static int IsStrongOf2(int io_DecNum)
+        public static int IsPowerOf2(int io_DecimalNumber)
         {
-            int resIsStrongOf2 = 0;
-            bool isStrongOf2 = io_DecNum > 0 && (io_DecNum & (io_DecNum - 1)) == 0;
+            int resIsPowerOf2 = 0;
+            bool isPowerOf2 = io_DecimalNumber > 0 && (io_DecimalNumber & (io_DecimalNumber - 1)) == 0;
 
-            if (isStrongOf2) 
+            if (isPowerOf2) 
             {
-                resIsStrongOf2 = 1;
+                resIsPowerOf2 = 1;
             }
 
-            return resIsStrongOf2;
+            return resIsPowerOf2;
         }
 
-        public static void FindOrderOfNumbers(int io_DecNum1, int io_DecNum2, int io_DecNum3, out int o_MinNumber, out int o_MidNumber, out int o_MaxNumber)
+        public static void FindOrderOfNumbers(int io_DecimalNumber1, int io_DecimalNumber2, int io_DecimalNumber3, out int o_MinNumber, out int o_MidNumber, out int o_MaxNumber)
         {
-            o_MinNumber = Math.Min(io_DecNum1,Math.Min(io_DecNum2, io_DecNum3));
-            o_MaxNumber = Math.Max(io_DecNum1,Math.Max(io_DecNum2, io_DecNum3));
-            o_MidNumber = io_DecNum1 + io_DecNum2 + io_DecNum3 - o_MinNumber - o_MaxNumber;
+            o_MinNumber = Math.Min(io_DecimalNumber1, Math.Min(io_DecimalNumber2, io_DecimalNumber3));
+            o_MaxNumber = Math.Max(io_DecimalNumber1, Math.Max(io_DecimalNumber2, io_DecimalNumber3));
+            o_MidNumber = io_DecimalNumber1 + io_DecimalNumber2 + io_DecimalNumber3 - o_MinNumber - o_MaxNumber;
         }
     }
 }
