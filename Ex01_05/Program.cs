@@ -6,6 +6,7 @@ namespace Ex01_05
     public class Program
     {
         public const int k_LenOfNum = 8;
+
         public static void Main()
         {
             int numForStats = GetUserInput();
@@ -23,24 +24,23 @@ namespace Ex01_05
                 Console.WriteLine("Please enter an 8 digits number:");
                 userInput.Append(Console.ReadLine());
                 validInputFromUser = CheckUserInput(userInput, out numFromUser);
-                if (!validInputFromUser)
+                if(!validInputFromUser)
                 {
                     Console.WriteLine("Invalid input!\nTry again");
                     userInput.Clear();
                 }
-            } while (!validInputFromUser);
+            } while(!validInputFromUser);
 
             return numFromUser;
         }
 
-        public static bool CheckUserInput(StringBuilder io_UserInput, out int o_NumFromUser)
+        public static bool CheckUserInput(StringBuilder i_UserInput, out int o_NumFromUser)
         {
-            int lengthOfNum = io_UserInput.Length;
-            bool validNumFromUser = int.TryParse(io_UserInput.ToString(), out o_NumFromUser);
+            bool validNumFromUser = int.TryParse(i_UserInput.ToString(), out o_NumFromUser);
             
-            if (validNumFromUser)
+            if(validNumFromUser)
             {
-                if (o_NumFromUser < 0 || lengthOfNum != k_LenOfNum)
+                if(o_NumFromUser < 0 || i_UserInput.Length != k_LenOfNum)
                 {
                     validNumFromUser = false;
                 }
@@ -55,18 +55,18 @@ namespace Ex01_05
             int countOfDigitsDividableBy3 = 0, currentDigitInNumForStats, numOfLeadingZeroes, numOfDigits = 0;
             float avgOfDigits = 0;
 
-            while (i_NumForStats > 0)
+            while(i_NumForStats > 0)
             {
                 currentDigitInNumForStats = i_NumForStats % 10;
-                if (currentDigitInNumForStats < leastSignificantDigit)
+                if(currentDigitInNumForStats < leastSignificantDigit)
                 {
                     smallerThanLeastSignificantDigit++;
                 }
-                if (currentDigitInNumForStats % 3 == 0)
+                if(currentDigitInNumForStats % 3 == 0)
                 {
                     countOfDigitsDividableBy3++;
                 }
-                if (currentDigitInNumForStats > biggestDigit)
+                if(currentDigitInNumForStats > biggestDigit)
                 {
                     biggestDigit = currentDigitInNumForStats;
                 }
@@ -79,7 +79,7 @@ namespace Ex01_05
             numOfLeadingZeroes = k_LenOfNum - numOfDigits; 
             avgOfDigits /= k_LenOfNum;
             countOfDigitsDividableBy3 += numOfLeadingZeroes;
-            if (leastSignificantDigit != 0)
+            if(leastSignificantDigit != 0)
             {
                 smallerThanLeastSignificantDigit += numOfLeadingZeroes;
             }
