@@ -22,14 +22,14 @@ namespace Ex01_03
                 Console.WriteLine("Please enter the number of rows for the diamond: ");
                 userInput.Append(Console.ReadLine());
                 successfullyParsed = int.TryParse(userInput.ToString(), out numOfRows);
-                if (!successfullyParsed)
+                if(!successfullyParsed)
                 {
                     Console.WriteLine("Invalid input! Your input is not a whole number");
                     userInput.Clear();
                 }
-            } while (!successfullyParsed);
+            } while(!successfullyParsed);
 
-            if (numOfRows % 2 == 0)
+            if(numOfRows % 2 == 0)
             {
                 numOfRows++;
             }

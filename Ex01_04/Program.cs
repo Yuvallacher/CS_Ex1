@@ -10,7 +10,7 @@ namespace Ex01_04
         public static void Main()
         {
             StringBuilder userInput = GetUserInput();
-            IsPalindrome(new StringBuilder(userInput.ToString()));
+            IsPalindrome(userInput);
             IsDividableByFour(userInput);
             CheckNumberOfLowercaseLetters(userInput);
         }
@@ -25,30 +25,30 @@ namespace Ex01_04
                 Console.WriteLine("Please enter a 10 character long input:");
                 userInput.Append(Console.ReadLine());
                 validInput = ValidateInput(userInput);
-                if (!validInput)
+                if(!validInput)
                 {
                     Console.WriteLine("Invalid input! Please try again");
                     userInput.Clear();
                 }
-            } while (!validInput);
+            } while(!validInput);
 
             return userInput;
         }
 
-        public static bool ValidateInput(StringBuilder io_UserInput)
+        public static bool ValidateInput(StringBuilder i_UserInput)
         {
-            bool lengthOfInputCorrect = io_UserInput.Length == k_lengthOfInput;
+            bool lengthOfInputCorrect = i_UserInput.Length == k_lengthOfInput;
             bool containsLetters = false;
             bool containsNumbers = false;
             bool containsSymbols = false;
 
-            for (int i = 0; i < io_UserInput.Length; i++)
+            for(int i = 0; i < i_UserInput.Length; i++)
             {
-                if (Char.IsDigit(io_UserInput[i]))
+                if(Char.IsDigit(i_UserInput[i]))
                 {
                     containsNumbers = true;
                 }
-                else if (Char.IsLetter(io_UserInput[i]))
+                else if(Char.IsLetter(i_UserInput[i]))
                 {
                     containsLetters = true;
                 }
@@ -64,7 +64,8 @@ namespace Ex01_04
         public static void IsPalindrome(StringBuilder i_StringToCheck)
         {
             bool palindrome = IsPalindromeHelper(i_StringToCheck);
-            if (palindrome)
+
+            if(palindrome)
             {
                 Console.WriteLine("The string is a palindrome");
             }
@@ -78,9 +79,9 @@ namespace Ex01_04
         {
             bool result = true;
 
-            if (i_StringToCheck.Length > 1)
+            if(i_StringToCheck.Length > 1)
             {
-                if (i_StringToCheck[0] == i_StringToCheck[i_StringToCheck.Length - 1])
+                if(i_StringToCheck[0] == i_StringToCheck[i_StringToCheck.Length - 1])
                 {
                     i_StringToCheck.Remove(0, 1);
                     i_StringToCheck.Remove(i_StringToCheck.Length - 1, 1);
@@ -95,12 +96,13 @@ namespace Ex01_04
             return result;
         }
 
-        public static void IsDividableByFour(StringBuilder io_StringToCheck)
+        public static void IsDividableByFour(StringBuilder i_StringToCheck)
         {
-            bool isNumber = long.TryParse(io_StringToCheck.ToString(), out long stringAsNumber);
-            if (isNumber)
+            bool isNumber = long.TryParse(i_StringToCheck.ToString(), out long stringAsNumber);
+
+            if(isNumber)
             {
-                if (stringAsNumber % 4 == 0)
+                if(stringAsNumber % 4 == 0)
                 {
                     Console.WriteLine("The number {0} is dividable by 4", stringAsNumber);
                 }
@@ -116,11 +118,11 @@ namespace Ex01_04
             int counterOfLowercaseLetters = 0;
             bool isNumber = long.TryParse(i_StringToCheck.ToString(), out _);
 
-            if (!isNumber)
+            if(!isNumber)
             {
-                for (int i = 0; i < i_StringToCheck.Length; i++)
+                for(int i = 0; i < i_StringToCheck.Length; i++)
                 {
-                    if (Char.IsLower(i_StringToCheck[i]))
+                    if(Char.IsLower(i_StringToCheck[i]))
                     {
                         counterOfLowercaseLetters++;
                     }

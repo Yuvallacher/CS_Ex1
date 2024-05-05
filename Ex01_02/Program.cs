@@ -13,12 +13,12 @@ namespace Ex01_02
 
         public static void PrintDiamond(int i_NumOfCurrentRow, int i_DesiredNumOfRows)
         {
-            if (i_NumOfCurrentRow < i_DesiredNumOfRows)
+            if(i_NumOfCurrentRow < i_DesiredNumOfRows)
             {
                 PrintDiamond(i_NumOfCurrentRow + 1, i_DesiredNumOfRows);
                 int spaces = Math.Abs(i_DesiredNumOfRows / 2 - i_NumOfCurrentRow);
                 Console.Write(new string(' ', spaces));
-                if (i_NumOfCurrentRow < i_DesiredNumOfRows / 2)
+                if(i_NumOfCurrentRow < i_DesiredNumOfRows / 2)
                 {
                     PrintLine(2 * i_NumOfCurrentRow + 1);
                 }
@@ -31,7 +31,7 @@ namespace Ex01_02
 
         public static void PrintLine(int i_length)
         {
-            for (int i = 0; i < i_length; i++)
+            for(int i = 0; i < i_length; i++)
             {
                 Console.Write("*");
             }
