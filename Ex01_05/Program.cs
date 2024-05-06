@@ -85,7 +85,7 @@ namespace Ex01_05
             }
 
             Console.WriteLine(new StringBuilder().AppendFormat(
-@"The number of digits that are smaller from the least significant digit is: {0}
+@"The number of digits that are smaller than the least significant digit is: {0}
 The number of digits that divisible by 3 are: {1}
 The biggest digit is: {2}
 The average of the digits are: {3}",

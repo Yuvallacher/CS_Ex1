@@ -8,7 +8,7 @@ namespace Ex01_03
         public static void Main()
         {
             int numOfRows = getUserInput();
-            Ex01_02.Program.printDiamond(Ex01_02.Program.k_StartingRow, numOfRows);
+            Ex01_02.Program.PrintDiamond(Ex01_02.Program.k_StartingRow, numOfRows);
         }
 
         private static int getUserInput()

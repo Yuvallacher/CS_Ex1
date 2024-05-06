@@ -10,7 +10,7 @@ namespace Ex01_04
         public static void Main()
         {
             StringBuilder userInput = getUserInput();
-            isPalindrome(userInput);
+            isPalindrome(new StringBuilder(userInput.ToString()));
             isDividableByFour(userInput);
             checkNumberOfLowercaseLetters(userInput);
         }
