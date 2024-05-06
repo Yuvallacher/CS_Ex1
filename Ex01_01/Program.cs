@@ -115,7 +115,7 @@ Smallest number: {1}", maxNumber, minNumber);
             countOfOne += getHowManyDigits(i_BinaryNumber3, k_One);
             countOfZero /= k_AmountOfNumbers;
             countOfOne /= k_AmountOfNumbers;
-            Console.WriteLine("The average size of digit zero is: {0} and of the digit one is: {1}", countOfZero, countOfOne);
+            Console.WriteLine("The average occurrences of digit zero is: {0} and of the digit one is: {1}", countOfZero, countOfOne);
         }
 
         private static float getHowManyDigits(int i_BinaryNumber, int i_DigitToSearch)
