@@ -9,13 +9,13 @@ namespace Ex01_04
         
         public static void Main()
         {
-            StringBuilder userInput = GetUserInput();
-            IsPalindrome(userInput);
-            IsDividableByFour(userInput);
-            CheckNumberOfLowercaseLetters(userInput);
+            StringBuilder userInput = getUserInput();
+            isPalindrome(userInput);
+            isDividableByFour(userInput);
+            checkNumberOfLowercaseLetters(userInput);
         }
 
-        public static StringBuilder GetUserInput()
+        private static StringBuilder getUserInput()
         {
             bool validInput;
             StringBuilder userInput = new StringBuilder(k_lengthOfInput);
@@ -24,7 +24,7 @@ namespace Ex01_04
             {
                 Console.WriteLine("Please enter a 10 character long input:");
                 userInput.Append(Console.ReadLine());
-                validInput = ValidateInput(userInput);
+                validInput = validateInput(userInput);
                 if(!validInput)
                 {
                     Console.WriteLine("Invalid input! Please try again");
@@ -35,7 +35,7 @@ namespace Ex01_04
             return userInput;
         }
 
-        public static bool ValidateInput(StringBuilder i_UserInput)
+        private static bool validateInput(StringBuilder i_UserInput)
         {
             bool lengthOfInputCorrect = i_UserInput.Length == k_lengthOfInput;
             bool containsLetters = false;
@@ -61,9 +61,9 @@ namespace Ex01_04
             return !(containsLetters && containsNumbers) && !containsSymbols && lengthOfInputCorrect;
         }
 
-        public static void IsPalindrome(StringBuilder i_StringToCheck)
+        private static void isPalindrome(StringBuilder i_StringToCheck)
         {
-            bool palindrome = IsPalindromeHelper(i_StringToCheck);
+            bool palindrome = isPalindromeHelper(i_StringToCheck);
 
             if(palindrome)
             {
@@ -75,7 +75,7 @@ namespace Ex01_04
             }
         }
 
-        public static bool IsPalindromeHelper(StringBuilder i_StringToCheck)
+        private static bool isPalindromeHelper(StringBuilder i_StringToCheck)
         {
             bool result = true;
 
@@ -85,7 +85,7 @@ namespace Ex01_04
                 {
                     i_StringToCheck.Remove(0, 1);
                     i_StringToCheck.Remove(i_StringToCheck.Length - 1, 1);
-                    result = IsPalindromeHelper(i_StringToCheck);
+                    result = isPalindromeHelper(i_StringToCheck);
                 }
                 else
                 {
@@ -96,7 +96,7 @@ namespace Ex01_04
             return result;
         }
 
-        public static void IsDividableByFour(StringBuilder i_StringToCheck)
+        private static void isDividableByFour(StringBuilder i_StringToCheck)
         {
             bool isNumber = long.TryParse(i_StringToCheck.ToString(), out long stringAsNumber);
 
@@ -113,7 +113,7 @@ namespace Ex01_04
             }
         }
 
-        public static void CheckNumberOfLowercaseLetters(StringBuilder i_StringToCheck)
+        private static void checkNumberOfLowercaseLetters(StringBuilder i_StringToCheck)
         {
             int counterOfLowercaseLetters = 0;
             bool isNumber = long.TryParse(i_StringToCheck.ToString(), out _);

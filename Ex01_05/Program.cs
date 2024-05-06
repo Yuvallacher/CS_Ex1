@@ -9,11 +9,11 @@ namespace Ex01_05
 
         public static void Main()
         {
-            int numForStats = GetUserInput();
-            CheckAndPrintStats(numForStats);
+            int numForStats = getUserInput();
+            checkAndPrintStats(numForStats);
         }
 
-        public static int GetUserInput()
+        private static int getUserInput()
         {
             bool validInputFromUser;
             int numFromUser;
@@ -23,7 +23,7 @@ namespace Ex01_05
             {
                 Console.WriteLine("Please enter an 8 digits number:");
                 userInput.Append(Console.ReadLine());
-                validInputFromUser = CheckUserInput(userInput, out numFromUser);
+                validInputFromUser = checkUserInput(userInput, out numFromUser);
                 if(!validInputFromUser)
                 {
                     Console.WriteLine("Invalid input!\nTry again");
@@ -34,7 +34,7 @@ namespace Ex01_05
             return numFromUser;
         }
 
-        public static bool CheckUserInput(StringBuilder i_UserInput, out int o_NumFromUser)
+        private static bool checkUserInput(StringBuilder i_UserInput, out int o_NumFromUser)
         {
             bool validNumFromUser = int.TryParse(i_UserInput.ToString(), out o_NumFromUser);
             
@@ -48,8 +48,8 @@ namespace Ex01_05
 
             return validNumFromUser;
         }
-        
-        public static void CheckAndPrintStats(int i_NumForStats)
+
+        private static void checkAndPrintStats(int i_NumForStats)
         {
             int leastSignificantDigit = i_NumForStats % 10, smallerThanLeastSignificantDigit = 0, biggestDigit = 0;
             int countOfDigitsDividableBy3 = 0, currentDigitInNumForStats, numOfLeadingZeroes, numOfDigits = 0;

@@ -8,28 +8,28 @@ namespace Ex01_02
 
         public static void Main()
         {
-            PrintDiamond(k_StartingRow, 9);
+            printDiamond(k_StartingRow, 9);
         }
 
-        public static void PrintDiamond(int i_NumOfCurrentRow, int i_DesiredNumOfRows)
+        public static void printDiamond(int i_NumOfCurrentRow, int i_DesiredNumOfRows)
         {
             if(i_NumOfCurrentRow < i_DesiredNumOfRows)
             {
-                PrintDiamond(i_NumOfCurrentRow + 1, i_DesiredNumOfRows);
+                printDiamond(i_NumOfCurrentRow + 1, i_DesiredNumOfRows);
                 int spaces = Math.Abs(i_DesiredNumOfRows / 2 - i_NumOfCurrentRow);
                 Console.Write(new string(' ', spaces));
                 if(i_NumOfCurrentRow < i_DesiredNumOfRows / 2)
                 {
-                    PrintLine(2 * i_NumOfCurrentRow + 1);
+                    printLine(2 * i_NumOfCurrentRow + 1);
                 }
                 else
                 {
-                    PrintLine((i_DesiredNumOfRows - i_NumOfCurrentRow) * 2 - 1);
+                    printLine((i_DesiredNumOfRows - i_NumOfCurrentRow) * 2 - 1);
                 }
             }
         }
 
-        public static void PrintLine(int i_length)
+        private static void printLine(int i_length)
         {
             for(int i = 0; i < i_length; i++)
             {
